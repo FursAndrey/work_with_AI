@@ -1,0 +1,47 @@
+langcode: ru
+  # Язык конфигурации.
+status: true
+  # Включена ли конфигурация (true/false).
+dependencies:
+  # Ссылки на другие конфигурации/модули, от которых зависит эта конфигурация.
+  config:
+    - field.field.profile.violation_information.field_violation_type
+    - field.field.profile.violation_information.field_violation_code
+    - field.field.profile.violation_information.field_violation_date
+    - profile.type.violation_information
+  module:
+    - profile
+    - sync_employees
+id: profile.violation_information.default
+  # Уникальный ID дисплея формы: entity.bundle.mode
+targetEntityType: profile
+  # Тип сущности, для которой задаётся форма.
+bundle: violation_information
+  # Бандл (тип профиля).
+mode: default
+  # Режим формы (обычно default).
+content:
+  # Настройки виджетов для полей формы.
+  field_violation_type:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings: { }
+    third_party_settings: { }
+  field_violation_code:
+    type: number
+    weight: 2
+    region: content
+    settings: { }
+    third_party_settings: { }
+  field_violation_date:
+    type: datetime_default
+    weight: 3
+    region: content
+    settings: { }
+    third_party_settings: { }
+  is_default:
+    weight: 100
+    region: hidden
+hidden: {  }
+  # Явно скрытые компоненты формы.

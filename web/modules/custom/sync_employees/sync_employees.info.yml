@@ -1,0 +1,10 @@
+name: 'Sync Employees'
+type: module
+description: 'Страница /sync_employees выводит «привет».'
+core_version_requirement: ^10 || ^11
+package: 'Custom'
+dependencies:
+  - user
+  - field
+  - profile
+  - datetime

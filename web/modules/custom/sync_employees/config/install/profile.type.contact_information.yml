@@ -1,0 +1,14 @@
+langcode: ru
+  # Язык конфигурации.
+status: true
+  # Конфигурация активна (true/false).
+dependencies:
+  module:
+    - profile
+    - sync_employees
+id: contact_information
+label: 'Контактная информация'
+registration: false
+multiple: false
+weight: 0
+targetEntityType: user

@@ -1,0 +1,5 @@
+name: 'Sync Simulation Module'
+type: module
+description: 'Простой модуль: страница /sync_simulation с текстом «привет друпал».'
+core_version_requirement: ^10 || ^11
+package: 'Custom'

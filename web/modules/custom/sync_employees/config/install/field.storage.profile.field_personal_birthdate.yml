@@ -1,0 +1,35 @@
+langcode: ru
+# Язык этой конфигурации.
+status: true
+# Конфигурация активна (true/false).
+dependencies:
+  module:
+    - profile
+    - sync_employees
+    - datetime
+# Список модулей, от которых зависит данная конфигурация.
+id: profile.field_personal_birthdate
+# Уникальный ID хранилища поля: entityType.field_name.
+field_name: field_personal_birthdate
+# Машинное имя поля.
+entity_type: profile
+# Тип сущности, к которой относится хранение поля.
+type: datetime
+# Тип поля (плагин поля).
+settings:
+  datetime_type: date
+# Режим datetime: date (только дата) или datetime (дата и время).
+module: datetime
+# Модуль-источник типа поля.
+locked: false
+# Можно ли менять схему хранения (обычно false).
+cardinality: 1
+# Количество значений: 1 — одиночное, -1 — неограниченно.
+translatable: false
+# Переводимость значения поля.
+indexes: { }
+# Дополнительные индексы БД для ускорения выборок.
+persist_with_no_fields: false
+# Сохранять данные, если нет ни одной инстанции этого поля на бандлах.
+custom_storage: false
+# Используется ли кастомное хранилище вместо стандартного.

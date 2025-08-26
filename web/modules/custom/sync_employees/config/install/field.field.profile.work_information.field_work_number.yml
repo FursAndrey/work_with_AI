@@ -1,0 +1,21 @@
+langcode: ru
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_work_number
+    - profile.type.work_information
+  module:
+    - profile
+    - sync_employees
+id: profile.work_information.field_work_number
+field_name: field_work_number
+entity_type: profile
+bundle: work_information
+label: 'Номер'
+description: 'Номер'
+required: false
+translatable: false
+default_value: { }
+default_value_callback: ''
+settings: { }
+field_type: integer

@@ -1,0 +1,85 @@
+langcode: ru
+  # Язык конфигурации.
+status: true
+  # Включена ли конфигурация (true/false).
+dependencies:
+  # Ссылки на другие конфигурации/модули, от которых зависит эта конфигурация.
+  config:
+    - field.field.profile.personal_information.field_personal_fio
+    - field.field.profile.personal_information.field_personal_fiz_code
+    - field.field.profile.personal_information.field_personal_phone
+    - field.field.profile.personal_information.field_personal_birthdate
+    - profile.type.personal_information
+  module:
+    - profile
+    - sync_employees
+    - datetime
+id: profile.personal_information.default
+  # Уникальный ID дисплея формы: entity.bundle.mode
+targetEntityType: profile
+  # Тип сущности, для которой задаётся форма.
+bundle: personal_information
+  # Бандл (тип профиля).
+mode: default
+  # Режим формы (обычно default).
+content:
+  # Настройки виджетов для полей формы.
+  field_personal_fio:
+    type: string_textfield
+    # Виджет для поля: однострочное текстовое поле.
+    weight: 0
+    # Порядок отображения в форме (меньше — выше).
+    region: content
+    # Регион формы, в котором отображается виджет.
+    settings:
+      size: 60
+      # Размер input (HTML size атрибут).
+      placeholder: 'ФИО пользователя'
+      # Плейсхолдер для поля.
+    third_party_settings: { }
+    # Доп. настройки сторонних модулей (пустой массив обязателен для Drupal 10/11).
+  field_personal_fiz_code:
+    type: string_textfield
+    # Виджет: однострочное текстовое поле.
+    weight: 1
+    # Порядок отображения.
+    region: content
+    # Регион формы.
+    settings:
+      size: 60
+      # Размер input.
+      placeholder: 'Код ФИЗ лица'
+      # Плейсхолдер.
+    third_party_settings: { }
+    # Доп. настройки сторонних модулей.
+  field_personal_phone:
+    type: string_textfield
+    # Виджет: однострочное текстовое поле.
+    weight: 1
+    # Порядок отображения.
+    region: content
+    # Регион формы.
+    settings:
+      size: 60
+      # Размер input.
+      placeholder: 'Мобильный телефон'
+      # Плейсхолдер.
+    third_party_settings: { }
+    # Доп. настройки сторонних модулей.
+  field_personal_birthdate:
+    type: datetime_default
+    # Виджет даты для поля datetime.
+    weight: 2
+    # Порядок отображения.
+    region: content
+    # Регион формы.
+    settings: { }
+    # Настройки виджета по умолчанию.
+    third_party_settings: { }
+    # Доп. настройки сторонних модулей.
+  is_default:
+    weight: 100
+    region: hidden
+    # Системное поле профиля, скрыто в форме.
+hidden: {  }
+  # Явно скрытые компоненты формы.

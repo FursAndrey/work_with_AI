@@ -1,0 +1,21 @@
+langcode: ru
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_med_amount
+    - profile.type.med_information
+  module:
+    - profile
+    - sync_employees
+id: profile.med_information.field_med_amount
+field_name: field_med_amount
+entity_type: profile
+bundle: med_information
+label: 'Сумма'
+description: 'Сумма'
+required: false
+translatable: false
+default_value: { }
+default_value_callback: ''
+settings: { }
+field_type: float

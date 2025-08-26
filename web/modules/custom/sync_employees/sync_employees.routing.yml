@@ -1,0 +1,7 @@
+sync_employees.page:
+  path: '/sync_employees'
+  defaults:
+    _controller: 'Drupal\sync_employees\Controller\SyncEmployeesController::content'
+    _title: 'Sync Employees'
+  requirements:
+    _permission: 'access content'

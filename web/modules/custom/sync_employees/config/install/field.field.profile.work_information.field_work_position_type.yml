@@ -1,0 +1,21 @@
+langcode: ru
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_work_position_type
+    - profile.type.work_information
+  module:
+    - profile
+    - sync_employees
+id: profile.work_information.field_work_position_type
+field_name: field_work_position_type
+entity_type: profile
+bundle: work_information
+label: 'Тип должности'
+description: 'Тип должности'
+required: false
+translatable: false
+default_value: { }
+default_value_callback: ''
+settings: { }
+field_type: string

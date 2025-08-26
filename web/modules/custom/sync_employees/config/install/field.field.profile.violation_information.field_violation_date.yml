@@ -1,0 +1,21 @@
+langcode: ru
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_violation_date
+    - profile.type.violation_information
+  module:
+    - profile
+    - sync_employees
+id: profile.violation_information.field_violation_date
+field_name: field_violation_date
+entity_type: profile
+bundle: violation_information
+label: 'Дата нарушения'
+description: 'Дата нарушения'
+required: false
+translatable: false
+default_value: { }
+default_value_callback: ''
+settings: { }
+field_type: datetime

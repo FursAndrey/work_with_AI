@@ -1,0 +1,38 @@
+langcode: ru
+# Язык конфигурации.
+status: true
+# Активность конфигурации (true/false).
+dependencies:
+# Зависимости от модулей — корректный порядок установки и удаление вместе с модулем.
+  module:
+    - profile
+    - sync_employees
+id: profile.field_personal_phone
+# Уникальный ID хранилища поля: entityType.field_name.
+field_name: field_personal_phone
+# Машинное имя поля.
+entity_type: profile
+# Тип сущности, к которой относится хранение поля.
+type: string
+# Тип данных поля (плагин Field).
+settings:
+  max_length: 255
+  # Максимальная длина строки.
+  is_ascii: false
+  # Только ASCII символы (false — любые Юникод символы разрешены).
+  case_sensitive: false
+  # Учитывать регистр при сохранении/индексах.
+module: core
+# Модуль-источник типа поля.
+locked: false
+# Запретить/разрешить изменение схемы хранения.
+cardinality: 1
+# Количество значений (1 — одиночное поле, -1 — неограниченно).
+translatable: false
+# Является ли поле переводимым.
+indexes: {  }
+# Дополнительные индексы для хранилища.
+persist_with_no_fields: false
+# Сохранять ли данные, если нет ни одной инстанции поля.
+custom_storage: false
+# Используется ли кастомное хранилище.

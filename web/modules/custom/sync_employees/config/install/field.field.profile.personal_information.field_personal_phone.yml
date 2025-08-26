@@ -1,0 +1,36 @@
+langcode: ru
+# Язык конфигурации.
+status: true
+# Активность конфигурации (true/false).
+dependencies:
+  # Конфиги и модули, от которых зависит инстанс поля.
+  config:
+    - field.storage.profile.field_personal_phone
+    - profile.type.personal_information
+  module:
+    - profile
+    - sync_employees
+id: profile.personal_information.field_personal_phone
+# Уникальный ID инстанса: entity.bundle.field_name.
+field_name: field_personal_phone
+# Машинное имя поля.
+entity_type: profile
+# Тип сущности, к которой привязывается поле.
+bundle: personal_information
+# Бандл (тип профиля), на котором размещается поле.
+label: 'Мобильный телефон'
+# Заголовок поля в UI.
+description: 'Мобильный телефон'
+# Описание поля (подсказка).
+required: false
+# Обязательность заполнения.
+translatable: false
+# Переводимость значения поля.
+default_value: { }
+# Значение по умолчанию.
+default_value_callback: ''
+# Коллбек для значения по умолчанию (если используется).
+settings: { }
+# Настройки конкретного инстанса поля (обычно пусто для string).
+field_type: string
+# Тип поля должен соответствовать storage-конфигу.

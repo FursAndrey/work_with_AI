@@ -1,0 +1,15 @@
+langcode: ru
+  # Язык конфигурации.
+status: true
+  # Конфигурация активна (true/false).
+dependencies:
+  # Зависимости по модулям, чтобы конфиг удалился вместе с модулем и имел корректный порядок установки.
+  module:
+    - profile
+    - sync_employees
+id: education_information
+label: 'Образование'
+registration: false
+multiple: false
+weight: 0
+targetEntityType: user

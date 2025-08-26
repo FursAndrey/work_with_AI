@@ -1,0 +1,123 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall hooks for the sync_employees module.
+ *
+ * В рамках установки/удаления модуль оперирует несколькими типами профилей
+ * через специализированные сервисы (personal, work, contact, family, education,
+ * medical, violation). Создание/удаление выполняется для всех пользователей.
+ */
+
+use Drupal\user\UserInterface;
+
+/**
+ * Implements hook_install().
+ *
+ * Создаёт недостающие профили для всех текущих пользователей для каждого
+ * поддерживаемого сервисом типа профиля.
+ *
+ * Сервисы: `sync_employees.install_*_information_service`.
+ * Возвращаемого значения нет.
+ */
+function sync_employees_install() {
+  $entity_type_manager = \Drupal::entityTypeManager();
+  $user_storage = $entity_type_manager->getStorage('user');
+
+  // Загрузим всех пользователей, кроме анонимного (uid = 0).
+  $uids = $user_storage->getQuery()
+    ->condition('uid', 0, '>')
+    ->accessCheck(FALSE)
+    ->execute();
+
+  if (empty($uids)) {
+    return;
+  }
+
+  $accounts = $user_storage->loadMultiple($uids);
+
+  $services['ipi_service'] = \Drupal::service('sync_employees.install_personal_information_service');
+  $services['iwi_service'] = \Drupal::service('sync_employees.install_work_information_service');
+  $services['ici_service'] = \Drupal::service('sync_employees.install_contact_information_service');
+  $services['ifi_service'] = \Drupal::service('sync_employees.install_family_information_service');
+  $services['iei_service'] = \Drupal::service('sync_employees.install_education_information_service');
+  $services['imi_service'] = \Drupal::service('sync_employees.install_med_information_service');
+  $services['ivi_service'] = \Drupal::service('sync_employees.install_violation_information_service');
+  $profile_storage = $entity_type_manager->getStorage('profile');
+
+  foreach ($accounts as $account) {
+    /** запуск всех сервисов для каждого пользователя */
+    foreach ($services as $key => $service) {
+      $existing = $service->loadProfileById($account->id());
+      if (!empty($existing)) {
+        continue;
+      }
+
+      $profile = $service->createProfile($profile_storage, $account->id());
+      $profile->save();
+    }
+  }
+}
+
+/**
+ * Implements hook_user_insert().
+ *
+ * При создании нового пользователя создаёт недостающие профили для всех
+ * поддерживаемых сервисами типов профилей.
+ *
+ * @param \Drupal\user\UserInterface $account
+ *   Созданный пользователь.
+ *
+ * Возвращаемого значения нет.
+ */
+function sync_employees_user_insert(UserInterface $account) {
+  $services['ipi_service'] = \Drupal::service('sync_employees.install_personal_information_service');
+  $services['iwi_service'] = \Drupal::service('sync_employees.install_work_information_service');
+  $services['ici_service'] = \Drupal::service('sync_employees.install_contact_information_service');
+  $services['ifi_service'] = \Drupal::service('sync_employees.install_family_information_service');
+  $services['iei_service'] = \Drupal::service('sync_employees.install_education_information_service');
+  $services['imi_service'] = \Drupal::service('sync_employees.install_med_information_service');
+  $services['ivi_service'] = \Drupal::service('sync_employees.install_violation_information_service');
+
+  foreach ($services as $key => $service) {
+    /** запуск всех сервисов для каждого пользователя */
+    $existing = $service->loadProfileById($account->id());
+    if (!empty($existing)) {
+      return;
+    }
+
+    $profile_storage = \Drupal::entityTypeManager()->getStorage('profile');
+
+    $profile = $service->createProfile($profile_storage, $account->id());
+    $profile->save();
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ *
+ * Удаляет профили всех поддерживаемых типов и связанные конфигурации
+ * (инстансы полей, хранилища полей, form/view дисплеи, типы профилей).
+ *
+ * Возвращаемого значения нет.
+ */
+function sync_employees_uninstall() {
+  $services['ipi_service'] = \Drupal::service('sync_employees.install_personal_information_service');
+  $services['iwi_service'] = \Drupal::service('sync_employees.install_work_information_service');
+  $services['ici_service'] = \Drupal::service('sync_employees.install_contact_information_service');
+  $services['ifi_service'] = \Drupal::service('sync_employees.install_family_information_service');
+  $services['iei_service'] = \Drupal::service('sync_employees.install_education_information_service');
+  $services['imi_service'] = \Drupal::service('sync_employees.install_med_information_service');
+  $services['ivi_service'] = \Drupal::service('sync_employees.install_violation_information_service');
+
+  foreach ($services as $key => $service) {
+    /** запуск всех сервисов для каждого профиля */
+    $service->deleteProfiles();
+    $service->deleteFieldConfig();
+    $service->deleteFieldStorageConfig();
+    $service->deleteEntityFormDisplay();
+    $service->deleteEntityViewDisplay();
+    $service->deleteProfileType();
+  }
+}
+

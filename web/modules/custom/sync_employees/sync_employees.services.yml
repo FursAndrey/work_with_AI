@@ -1,0 +1,28 @@
+services:
+  sync_employees.install_personal_information_service:
+    class: 'Drupal\sync_employees\Service\InstallPersonalInformationService'
+    public: true
+
+  sync_employees.install_work_information_service:
+    class: 'Drupal\sync_employees\Service\InstallWorkInformationService'
+    public: true
+
+  sync_employees.install_contact_information_service:
+    class: 'Drupal\sync_employees\Service\InstallContactInformationService'
+    public: true
+
+  sync_employees.install_family_information_service:
+    class: 'Drupal\sync_employees\Service\InstallFamilyInformationService'
+    public: true
+
+  sync_employees.install_education_information_service:
+    class: 'Drupal\sync_employees\Service\InstallEducationInformationService'
+    public: true
+
+  sync_employees.install_med_information_service:
+    class: 'Drupal\sync_employees\Service\InstallMedInformationService'
+    public: true
+
+  sync_employees.install_violation_information_service:
+    class: 'Drupal\sync_employees\Service\InstallViolationInformationService'
+    public: true

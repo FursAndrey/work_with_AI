@@ -1,0 +1,69 @@
+langcode: ru
+  # Язык конфигурации.
+status: true
+  # Включена ли конфигурация (true/false).
+dependencies:
+  # Ссылки на другие конфигурации/модули, от которых зависит эта конфигурация.
+  config:
+    - field.field.profile.work_information.field_work_enterdate
+    - field.field.profile.work_information.field_work_fireddate
+    - field.field.profile.work_information.field_work_number
+    - field.field.profile.work_information.field_work_position
+    - field.field.profile.work_information.field_work_position_type
+    - field.field.profile.work_information.field_work_unit
+    - profile.type.work_information
+  module:
+    - profile
+    - sync_employees
+    - datetime
+id: profile.work_information.default
+  # Уникальный ID дисплея формы: entity.bundle.mode
+targetEntityType: profile
+  # Тип сущности, для которой задаётся форма.
+bundle: work_information
+  # Бандл (тип профиля).
+mode: default
+  # Режим формы (обычно default).
+content:
+  # Настройки виджетов для полей формы.
+  field_work_number:
+    type: number
+    weight: 1
+    region: content
+    settings: { }
+    third_party_settings: { }
+  field_work_unit:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings: { }
+    third_party_settings: { } 
+  field_work_position:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings: { }
+    third_party_settings: { }
+  field_work_position_type:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings: { }
+    third_party_settings: { }
+  field_work_enterdate:
+    type: datetime_default
+    weight: 5
+    region: content
+    settings: { }
+    third_party_settings: { }
+  field_work_fireddate:
+    type: datetime_default
+    weight: 6
+    region: content
+    settings: { }
+    third_party_settings: { }
+  is_default:
+    weight: 100
+    region: hidden
+hidden: {  }
+  # Явно скрытые компоненты формы.

@@ -1,0 +1,21 @@
+langcode: ru
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_personal_birthdate
+    - profile.type.personal_information
+  module:
+    - profile
+    - sync_employees
+id: profile.personal_information.field_personal_birthdate
+field_name: field_personal_birthdate
+entity_type: profile
+bundle: personal_information
+label: 'Дата рождения'
+description: 'Дата рождения'
+required: false
+translatable: false
+default_value: { }
+default_value_callback: ''
+settings: { }
+field_type: datetime

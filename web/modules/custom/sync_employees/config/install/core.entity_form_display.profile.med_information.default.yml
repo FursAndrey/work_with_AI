@@ -1,0 +1,40 @@
+langcode: ru
+  # Язык конфигурации.
+status: true
+  # Включена ли конфигурация (true/false).
+dependencies:
+  # Ссылки на другие конфигурации/модули, от которых зависит эта конфигурация.
+  config:
+    - field.field.profile.med_information.field_med_amount
+    - field.field.profile.med_information.field_med_visit_date
+    - profile.type.med_information
+  module:
+    - profile
+    - sync_employees
+id: profile.med_information.default
+  # Уникальный ID дисплея формы: entity.bundle.mode
+targetEntityType: profile
+  # Тип сущности, для которой задаётся форма.
+bundle: med_information
+  # Бандл (тип профиля).
+mode: default
+  # Режим формы (обычно default).
+content:
+  # Настройки виджетов для полей формы.
+  field_med_amount:
+    type: number
+    weight: 1
+    region: content
+    settings: { }
+    third_party_settings: { }
+  field_med_visit_date:
+    type: datetime_default
+    weight: 2
+    region: content
+    settings: { }
+    third_party_settings: { }
+  is_default:
+    weight: 100
+    region: hidden
+hidden: {  }
+  # Явно скрытые компоненты формы.

@@ -1,0 +1,54 @@
+langcode: ru
+  # Язык конфигурации.
+status: true
+  # Включена ли конфигурация (true/false).
+dependencies:
+  # Ссылки на другие конфигурации/модули, от которых зависит эта конфигурация.
+  config:
+    - field.field.profile.family_information.field_fam_fio
+    - field.field.profile.family_information.field_fam_birthdate
+    - field.field.profile.family_information.field_fam_relation
+    - field.field.profile.family_information.field_fam_relat_code
+    - profile.type.family_information
+  module:
+    - profile
+    - sync_employees
+id: profile.family_information.default
+  # Уникальный ID дисплея формы: entity.bundle.mode
+targetEntityType: profile
+  # Тип сущности, для которой задаётся форма.
+bundle: family_information
+  # Бандл (тип профиля).
+mode: default
+  # Режим формы (обычно default).
+content:
+  # Настройки виджетов для полей формы.
+  field_fam_fio:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings: { }
+    third_party_settings: { }
+  field_fam_birthdate:
+    type: datetime_default
+    weight: 2
+    region: content
+    settings: { }
+    third_party_settings: { }
+  field_fam_relation:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings: { }
+    third_party_settings: { }
+  field_fam_relat_code:
+    type: number
+    weight: 4
+    region: content
+    settings: { }
+    third_party_settings: { }
+  is_default:
+    weight: 100
+    region: hidden
+hidden: {  }
+  # Явно скрытые компоненты формы.

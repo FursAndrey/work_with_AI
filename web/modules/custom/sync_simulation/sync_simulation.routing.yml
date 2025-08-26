@@ -1,0 +1,7 @@
+sync_simulation.page:
+  path: '/sync_simulation'
+  defaults:
+    _controller: 'Drupal\sync_simulation\Controller\SyncSimulationController::content'
+    _title: 'New Module'
+  requirements:
+    _permission: 'access content'

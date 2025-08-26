@@ -1,0 +1,4 @@
+services:
+  sync_simulation.sync_simulation:
+    class: 'Drupal\sync_simulation\Service\SyncSimulation'
+    public: true

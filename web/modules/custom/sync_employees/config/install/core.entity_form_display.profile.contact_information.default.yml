@@ -1,0 +1,47 @@
+langcode: ru
+  # Язык конфигурации.
+status: true
+  # Включена ли конфигурация (true/false).
+dependencies:
+  # Ссылки на другие конфигурации/модули, от которых зависит эта конфигурация.
+  config:
+    - field.field.profile.contact_information.field_contact_inner_phone
+    - field.field.profile.contact_information.field_contact_email
+    - field.field.profile.contact_information.field_contact_address
+    - profile.type.contact_information
+  module:
+    - profile
+    - sync_employees
+id: profile.contact_information.default
+  # Уникальный ID дисплея формы: entity.bundle.mode
+targetEntityType: profile
+  # Тип сущности, для которой задаётся форма.
+bundle: contact_information
+  # Бандл (тип профиля).
+mode: default
+  # Режим формы (обычно default).
+content:
+  # Настройки виджетов для полей формы.
+  field_contact_inner_phone:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings: { }
+    third_party_settings: { }
+  field_contact_email:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings: { }
+    third_party_settings: { }
+  field_contact_address:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings: { }
+    third_party_settings: { }
+  is_default:
+    weight: 100
+    region: hidden
+hidden: {  }
+  # Явно скрытые компоненты формы.

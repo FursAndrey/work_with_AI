@@ -1,0 +1,61 @@
+langcode: ru
+  # Язык конфигурации.
+status: true
+  # Включена ли конфигурация (true/false).
+dependencies:
+  # Ссылки на другие конфигурации/модули, от которых зависит эта конфигурация.
+  config:
+    - field.field.profile.education_information.field_edu_start_date
+    - field.field.profile.education_information.field_edu_end_date
+    - field.field.profile.education_information.field_edu_education_type
+    - field.field.profile.education_information.field_edu_institution
+    - field.field.profile.education_information.field_edu_specialty
+    - profile.type.education_information
+  module:
+    - profile
+    - sync_employees
+id: profile.education_information.default
+  # Уникальный ID дисплея формы: entity.bundle.mode
+targetEntityType: profile
+  # Тип сущности, для которой задаётся форма.
+bundle: education_information
+  # Бандл (тип профиля).
+mode: default
+  # Режим формы (обычно default).
+content:
+  # Настройки виджетов для полей формы.
+  field_edu_start_date:
+    type: datetime_default
+    weight: 1
+    region: content
+    settings: { }
+    third_party_settings: { }
+  field_edu_end_date:
+    type: datetime_default
+    weight: 2
+    region: content
+    settings: { }
+    third_party_settings: { }
+  field_edu_education_type:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings: { }
+    third_party_settings: { }
+  field_edu_institution:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings: { }
+    third_party_settings: { }
+  field_edu_specialty:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings: { }
+    third_party_settings: { }
+  is_default:
+    weight: 100
+    region: hidden
+hidden: {  }
+  # Явно скрытые компоненты формы.
