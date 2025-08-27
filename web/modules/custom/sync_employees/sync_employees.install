@@ -83,7 +83,7 @@ function sync_employees_user_insert(UserInterface $account) {
     /** запуск всех сервисов для каждого пользователя */
     $existing = $service->loadProfileById($account->id());
     if (!empty($existing)) {
-      return;
+      continue;
     }
 
     $profile_storage = \Drupal::entityTypeManager()->getStorage('profile');
