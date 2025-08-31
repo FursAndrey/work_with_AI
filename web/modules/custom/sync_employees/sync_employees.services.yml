@@ -26,3 +26,10 @@ services:
   sync_employees.install_violation_information_service:
     class: 'Drupal\sync_employees\Service\InstallViolationInformationService'
     public: true
+ 
+  sync_employees.sync_service:
+    class: 'Drupal\sync_employees\Service\SyncService'
+    arguments: 
+      - '@entity_type.manager'
+      - '@sync_simulation.sync_simulation'
+    public: true

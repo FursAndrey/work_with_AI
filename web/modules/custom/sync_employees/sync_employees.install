@@ -119,5 +119,17 @@ function sync_employees_uninstall() {
     $service->deleteEntityViewDisplay();
     $service->deleteProfileType();
   }
+
+  /** Удаление всех пользователей кроме анонимного и системного */
+  $entity_type_manager = \Drupal::entityTypeManager();
+  $user_storage = $entity_type_manager->getStorage('user');
+  $uids = $user_storage->getQuery()
+    ->condition('uid', 1, '>')
+    ->accessCheck(FALSE)
+    ->execute();
+  if (is_array($uids)) {
+    $accounts = $user_storage->loadMultiple($uids);
+    $user_storage->delete($accounts);
+  }
 }
 

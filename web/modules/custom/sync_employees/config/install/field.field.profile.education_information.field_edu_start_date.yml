@@ -11,8 +11,8 @@ id: profile.education_information.field_edu_start_date
 field_name: field_edu_start_date
 entity_type: profile
 bundle: education_information
-label: 'Дата рождения'
-description: 'Дата рождения'
+label: 'Дата начала'
+description: 'Дата начала'
 required: false
 translatable: false
 default_value: { }
