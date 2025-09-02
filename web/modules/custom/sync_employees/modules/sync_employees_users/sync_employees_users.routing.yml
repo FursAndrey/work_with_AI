@@ -1,0 +1,7 @@
+sync_employees_users.users_list:
+  path: '/sync_employees/users'
+  defaults:
+    _controller: 'Drupal\sync_employees_users\Controller\UsersController::usersList'
+    _title: 'Список пользователей'
+  requirements:
+    _permission: 'access content'

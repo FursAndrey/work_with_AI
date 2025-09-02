@@ -28,5 +28,4 @@ class SyncEmployeesController extends ControllerBase {
       '#markup' => $this->t('Синхронизация завершена'),
     ];
   }
-
 }

@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the sync_employees_users module.
+ */
+
+use Drupal\Core\Config\FileStorage;
+
+/**
+ * Implements hook_uninstall().
+ * 
+ * Удаляет Views представление при деинсталляции модуля.
+ */
+function sync_employees_users_uninstall() {
+  // Удаляем Views представление all_users
+  $config = \Drupal::configFactory()->getEditable('views.view.all_users');
+  if (!$config->isNew()) {
+    $config->delete();
+    \Drupal::logger('sync_employees_users')->info('Views представление all_users удалено при деинсталляции модуля.');
+  }
+}
+

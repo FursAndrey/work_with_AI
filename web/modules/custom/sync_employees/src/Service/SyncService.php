@@ -140,7 +140,7 @@ class SyncService {
     if (is_null($existing)) {
         $existing = [];
     }
-    $profile = $existing ? reset($existing) : null;
+    $profile = $existing ?? null;
     
     // Если профиля нет, создаем новый
     if (!$profile) {
@@ -176,14 +176,6 @@ class SyncService {
     } else {
       $result['profiles_updated']++;
     }
-
-    // Удаляем лишние профили, если они есть (оставляем только один)
-    if (count($existing) > 1) {
-      $toDelete = array_slice($existing, 1);
-      foreach ($toDelete as $extraProfile) {
-        $extraProfile->delete();
-      }
-    }
   }
 
   /**
@@ -197,7 +189,7 @@ class SyncService {
     if (is_null($existing)) {
         $existing = [];
     }
-    $profile = $existing ? reset($existing) : null;
+    $profile = $existing ?? null;
     
     // Если профиля нет, создаем новый
     if (!$profile) {
@@ -236,14 +228,6 @@ class SyncService {
     } else {
       $result['profiles_updated']++;
     }
-    
-    // Удаляем лишние профили, если они есть (оставляем только один)
-    if (count($existing) > 1) {
-      $toDelete = array_slice($existing, 1);
-      foreach ($toDelete as $extraProfile) {
-        $extraProfile->delete();
-      }
-    }
   }
 
   /**
@@ -257,7 +241,7 @@ class SyncService {
     if (is_null($existing)) {
       $existing = [];
     }
-    $profile = $existing ? reset($existing) : null;
+    $profile = $existing ?? null;
     
     // Если профиля нет, создаем новый
     if (!$profile) {
@@ -287,14 +271,6 @@ class SyncService {
     } else {
       $result['profiles_updated']++;
     }
-    
-    // Удаляем лишние профили, если они есть (оставляем только один)
-    if (count($existing) > 1) {
-      $toDelete = array_slice($existing, 1);
-      foreach ($toDelete as $extraProfile) {
-        $extraProfile->delete();
-      }
-    }
   }
 
   /**
@@ -308,7 +284,7 @@ class SyncService {
     if (is_null($existing)) {
         $existing = [];
     }
-    $profile = $existing ? reset($existing) : null;
+    $profile = $existing ?? null;
     
     // Если профиля нет, создаем новый
     if (!$profile) {
@@ -340,14 +316,6 @@ class SyncService {
       $result['profiles_created']++;
     } else {
       $result['profiles_updated']++;
-    }
-    
-    // Удаляем лишние профили, если они есть (оставляем только один)
-    if (count($existing) > 1) {
-      $toDelete = array_slice($existing, 1);
-      foreach ($toDelete as $extraProfile) {
-        $extraProfile->delete();
-      }
     }
   }
 
@@ -390,9 +358,9 @@ class SyncService {
    */
   private function upsertSingleProfile(UserInterface $user, string $bundle, array $values, array &$result): void {
     $storage = $this->profileStorage();
-    $profiles = $storage->loadByUser($user, $bundle);
-    $isNew = !$profiles;
-    $profile = $profiles ? reset($profiles) : $storage->create(['type' => $bundle, 'uid' => $user->id()]);
+    $profile = $storage->loadByUser($user, $bundle);
+    $isNew = !$profile;
+    $profile = $profile ?? $storage->create(['type' => $bundle, 'uid' => $user->id()]);
 
     foreach ($values as $field => $value) {
       if ($value === null || $value === '') {

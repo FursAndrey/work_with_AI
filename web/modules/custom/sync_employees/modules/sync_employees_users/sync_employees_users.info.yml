@@ -1,0 +1,8 @@
+name: 'Sync Employees Users'
+type: module
+description: 'Подмодуль для управления списком пользователей sync_employees.'
+core_version_requirement: ^10 || ^11
+package: 'Custom'
+dependencies:
+  - sync_employees
+  - views
